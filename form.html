@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        section label {
+            display: block;
+            margin-block: 20px;
+        }
+
+        .test {
+            display: block;
+
+        }
+    </style>
+</head>
+<header>
+    <h1>Buat Account Baru!</h1>
+</header>
+
+<body>
+    <h3>Sign Up Form</h3>
+    <form action="home.php">
+        <section>
+            <label for="namadepan">First name:</label>
+            <input type="text" id="namadepan" name="namadepan" required>
+        </section>
+        <section>
+            <label for="namabelakang">Last name:</label>
+            <input type="text" id="namabelakang" name="namabelakang" required>
+        </section>
+        <section>
+            <label for="gender">Gender:</label>
+            <input id="gender" type="radio" name="a" value="Male">Male
+            <input id="gender" type="radio" name="a" value="Female">Female
+            <input id="gender" type="radio" name="a" value="Other">Other
+        </section>
+        <section>
+            <label for="Negara">Nationality:</label>
+            <select id="Negara">
+                <option aria-checked="true">--Please choose an option--</option>
+                <option value="ID">Indonesia</option>
+                <option value="MY">Malaysia</option>
+            </select>
+        </section>
+        <section>
+            <label for="bahasa">Language Spoken</label>
+            <input type="checkbox" name="Bahasa" id="bahasa">Bahasa Indonesia <br>
+            <input type="checkbox" name="English" id="bahasa">English <br>
+            <input type="checkbox" name="Other" id="bahasa">Other <br>
+        </section>
+        <section>
+            <label for="bioi">Bio:</label>
+            <textarea name="Bio" id="bioi"></textarea>
+        </section>
+        <input type="submit">
+    </form>
+</body>
+
+</html>

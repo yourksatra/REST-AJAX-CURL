@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kutipan Anime dengan AJAX</title>
+    <style>
+        .quote, .quoteBy {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kutipan Anime</h1>
+    <button id="getQuoteButton">Tampilkan Kutipan</button>
+    
+    <div class="box">
+        <blockquote id="quoteText" class="quote"></blockquote>
+        <p class="quoteBy">By - <i id="quoteAuthor"></i></p>
+    </div>
+
+    <script>
+        // Tambahkan event listener ke tombol
+        document.getElementById("getQuoteButton").addEventListener("click", function() {
+            console.log("Tombol diklik, mulai permintaan AJAX...");
+
+            // Membuat permintaan AJAX ke API
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://animechan.io/api/v1/quotes/random", true); // true untuk asynchronous
+
+            // Ketika respons diterima
+            xhr.onload = function() {
+                console.log("Respons diterima:", xhr.status);
+
+                // Periksa status HTTP
+                if (xhr.status === 200) {
+                    console.log("Respons sukses:", xhr.responseText);
+
+                    // Parsing respons JSON dari API
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Data yang diambil:", response);
+
+                    // Memeriksa apakah data berisi konten yang diinginkan
+                    if (response.status === "success") {
+                        // Mengambil konten kutipan dan nama karakter
+                        var quote = response.data.content;
+                        var character = response.data.character.name;
+                        
+                        console.log("Kutipan:", quote);
+                        console.log("Karakter:", character);
+
+                        // Menampilkan kutipan dan karakter di halaman
+                        document.getElementById("quoteText").innerText = quote;
+                        document.getElementById("quoteAuthor").innerText = character;
+                        
+                        // Menampilkan elemen blockquote dan p
+                        document.getElementById("quoteText").style.display = "block";
+                        document.querySelector(".quoteBy").style.display = "block";
+                    } else {
+                        alert("Gagal mengambil data. Status respons: " + response.status);
+                    }
+                } else {
+                    alert("Error: Gagal mengambil data dari API. Status HTTP: " + xhr.status);
+                }
+            };
+
+            // Tangani kesalahan jaringan
+            xhr.onerror = function() {
+                alert("Request error.");
+            };
+
+            // Mengirim request
+            xhr.send();
+        });
+    </script>
+</body>
+</html>

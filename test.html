@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kalkulator</title>
+	<style>
+		.kotak{
+			display:block;
+			margin-block: 5px;
+		}
+		p{
+			display:inline;
+        }
+	</style>
+</head>
+<body>
+	<h1>Program Kalkulator Sederhana</h1>
+	<input type="number" id="angka1" name="angka1" placeholder="Masukkan Angka Pertama">
+	<input type="number" id="angka2" name="angka2" placeholder="Masukkan Angka Kedua">
+	<div class="kotak">
+		<button onclick="tambah()">+</button>
+		<p id="tambah"></p>
+	</div>
+	<div class="kotak">
+		<button onclick="kurang()">-</button>
+		<p id="kurang"></p>
+	</div>
+	<div class="kotak">
+		<button onclick="kali()">x</button>
+		<p id="kali"></p>
+	</div>
+	<div class="kotak">
+		<button onclick="bagi()">/</button>
+		<p id="bagi"></p>
+	</div>
+    <div class="kotak">
+		<button onclick="modulus()">%</button>
+		<p id="modulus"></p>
+	</div>
+   
+<script src="test.js"></script>
+</body>
+</html>
